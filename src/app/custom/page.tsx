@@ -1,25 +1,11 @@
 import { CustomOrderForm } from "@/components/forms/CustomOrderForm";
-import Link from "next/link";
-import { CartDrawer } from "@/components/layout/CartDrawer";
+import { Header } from "@/components/layout/Header";
 
 export default function CustomOrderPage() {
   return (
     <div className="min-h-screen bg-lacquer-canvas text-lacquer-ink flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full bg-lacquer-canvas/80 backdrop-blur-md border-b border-lacquer-ink/10">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-jetbrains text-sm uppercase tracking-widest cursor-pointer hover:text-bordeaux-gloss transition-colors">
-            Home
-          </Link>
-          <div className="font-fraunces text-2xl tracking-tighter">PRESS & POLISH</div>
-          <div className="flex items-center gap-6">
-            <Link href="/catalog" className="font-jetbrains text-sm uppercase tracking-widest hover:text-bordeaux-gloss hidden md:block transition-colors">
-              Catalog
-            </Link>
-            <CartDrawer />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="grow pt-12">
         <div className="container mx-auto px-6 lg:px-12">

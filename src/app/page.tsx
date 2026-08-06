@@ -2,7 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import Link from "next/link";
 import { ProductGrid } from "@/components/sections/ProductGrid";
 import { ProductFilters } from "@/components/sections/ProductFilters";
-import { CartDrawer } from "@/components/layout/CartDrawer";
+import { Header } from "@/components/layout/Header";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -47,20 +47,7 @@ export default function Home() {
       </div>
 
       {/* Header / Nav (Simplified for demo) */}
-      <header className="sticky top-0 z-50 w-full bg-lacquer-canvas/80 backdrop-blur-md border-b border-lacquer-ink/10">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/catalog" className="font-jetbrains text-sm uppercase tracking-widest cursor-pointer hover:text-bordeaux-gloss transition-colors">
-            Catalog
-          </Link>
-          <div className="font-fraunces text-2xl tracking-tighter">PRESS & POLISH</div>
-          <div className="flex items-center gap-6">
-            <Link href="/sizing" className="font-jetbrains text-sm uppercase tracking-widest hover:text-bordeaux-gloss hidden md:block transition-colors">
-              Sizing Guide
-            </Link>
-            <CartDrawer />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="grow">
         {/* Hero Section */}

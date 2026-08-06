@@ -44,7 +44,7 @@ export function ProductFilters() {
       <div className="flex items-center gap-6">
         <div className="flex flex-col gap-2">
           <span className="font-jetbrains text-xs text-lacquer-ink/50 uppercase">By Color / Finish</span>
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-wrap">
             {filterColors.map((c) => (
               <div key={c.hex} className="flex flex-col items-center gap-1">
                 <SwatchChip

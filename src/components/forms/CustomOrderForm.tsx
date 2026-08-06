@@ -146,7 +146,7 @@ export function CustomOrderForm() {
 
                 <div>
                   <label className="block font-jetbrains text-xs uppercase mb-4">Measurements (mm)</label>
-                  <div className="grid grid-cols-5 gap-4">
+                  <div className="grid grid-cols-5 gap-2 md:gap-4">
                     {["thumb", "index", "middle", "ring", "pinky"].map((finger) => (
                       <div key={finger}>
                         <label className="block font-jetbrains text-[10px] uppercase text-center mb-1">{finger}</label>

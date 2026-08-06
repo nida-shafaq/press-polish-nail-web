@@ -84,7 +84,7 @@ export function SizingGuide() {
                   )}
                 >
                   <span className="font-fraunces text-2xl w-12 text-left">{size.label}</span>
-                  <div className="flex-1 grid grid-cols-5 gap-2 text-center font-jetbrains text-sm">
+                  <div className="flex-1 grid grid-cols-5 gap-1 md:gap-2 text-center font-jetbrains text-xs md:text-sm">
                     <span>{size.thumb}</span>
                     <span>{size.index}</span>
                     <span>{size.middle}</span>
