@@ -4,6 +4,7 @@ import { ProductGrid } from "@/components/sections/ProductGrid";
 import { ProductFilters } from "@/components/sections/ProductFilters";
 import { CartDrawer } from "@/components/layout/CartDrawer";
 import Image from "next/image";
+import { Suspense } from "react";
 
 // Mock products for the home page rail
 const MOCK_PRODUCTS = [
@@ -67,7 +68,9 @@ export default function Home() {
 
         {/* Bestsellers Section */}
         <div className="container mx-auto">
-          <ProductFilters />
+          <Suspense fallback={<div className="h-24 bg-lacquer-canvas border-b border-lacquer-ink/10 animate-pulse" />}>
+            <ProductFilters />
+          </Suspense>
           <ProductGrid title="Curated Bestsellers" products={MOCK_PRODUCTS} />
         </div>
 
