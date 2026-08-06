@@ -2,6 +2,7 @@ import { ProductGrid } from "@/components/sections/ProductGrid";
 import { ProductFilters } from "@/components/sections/ProductFilters";
 import Link from "next/link";
 import { CartDrawer } from "@/components/layout/CartDrawer";
+import { Suspense } from "react";
 
 // Reusing MOCK_PRODUCTS for the catalog demo
 const MOCK_PRODUCTS = [
@@ -77,7 +78,9 @@ export default function CatalogPage() {
             </p>
           </div>
           
-          <ProductFilters />
+          <Suspense fallback={<div className="h-24 bg-lacquer-canvas border-b border-lacquer-ink/10 animate-pulse" />}>
+            <ProductFilters />
+          </Suspense>
           
           {/* Promotional Banner linking to Sizing */}
           <div className="px-6 lg:px-12 my-8">
