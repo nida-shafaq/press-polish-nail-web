@@ -51,10 +51,10 @@ export function CartDrawer() {
               <div className={`flex-1 p-6 min-h-0 ${items.length === 0 ? "overflow-hidden" : "overflow-y-auto"}`}>
                 {items.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
-                    <ShoppingBag className="w-12 h-12 text-lacquer-ink/20 stroke-[1]" />
+                    <ShoppingBag className="w-12 h-12 text-lacquer-ink/20 stroke-1" />
                     <div>
                       <h3 className="font-fraunces text-2xl text-lacquer-ink mb-2">YOUR BAG IS EMPTY</h3>
-                      <p className="font-jakarta text-sm text-lacquer-ink/60 max-w-[250px] mx-auto">
+                      <p className="font-jakarta text-sm text-lacquer-ink/60 max-w-xs mx-auto">
                         Explore our luxury press-on lacquers and find your perfect set.
                       </p>
                     </div>
