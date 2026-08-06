@@ -60,12 +60,7 @@ export function CustomOrderForm() {
 
   return (
     <section className="w-full max-w-3xl mx-auto py-24 px-6">
-      <div className="mb-12 text-center">
-        <h2 className="font-fraunces text-4xl mb-4 text-lacquer-ink">Bespoke Request</h2>
-        <p className="font-jakarta text-lacquer-ink/70">
-          Commission a one-of-a-kind set designed exclusively for you.
-        </p>
-      </div>
+
 
       <div className="bg-white p-8 md:p-12 shadow-xl border border-lacquer-ink/5">
         {step < 4 && (
