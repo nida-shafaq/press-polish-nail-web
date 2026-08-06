@@ -48,7 +48,7 @@ export function CartDrawer() {
                 </button>
               </div>
 
-              <div className={`flex-1 p-6 min-h-0 ${items.length === 0 ? "overflow-hidden" : "overflow-y-auto"}`}>
+              <div className={`flex-1 p-6 min-h-0 bg-lacquer-canvas ${items.length === 0 ? "overflow-hidden" : "overflow-y-auto"}`}>
                 {items.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
                     <ShoppingBag className="w-12 h-12 text-lacquer-ink/20 stroke-1" />
