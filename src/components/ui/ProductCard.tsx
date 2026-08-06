@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { SwatchChip } from "@/components/ui/SwatchChip";
+import { useCartStore } from "@/store/useCartStore";
 
 interface Product {
   id: string;
@@ -17,6 +18,21 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { addItem, showToast, toggleCart } = useCartStore();
+
+  const handleQuickAdd = (e: React.MouseEvent) => {
+    e.stopPropagation(); // prevent card click if we add one later
+    addItem({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      swatchHex: product.swatchHex,
+      image: product.images[0],
+      quantity: 1
+    });
+    showToast(`${product.title} added to your bag.`);
+  };
+
   return (
     <motion.div 
       className="group relative flex flex-col gap-4 cursor-pointer"
@@ -34,7 +50,10 @@ export function ProductCard({ product }: ProductCardProps) {
         
         {/* Quick Add overlay */}
         <div className="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <button className="w-full py-3 bg-lacquer-surface text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors">
+          <button 
+            onClick={handleQuickAdd}
+            className="w-full py-3 bg-lacquer-surface text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors"
+          >
             Quick Add
           </button>
         </div>

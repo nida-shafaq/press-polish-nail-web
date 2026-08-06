@@ -2,7 +2,6 @@ import { Hero } from "@/components/sections/Hero";
 import Link from "next/link";
 import { ProductGrid } from "@/components/sections/ProductGrid";
 import { ProductFilters } from "@/components/sections/ProductFilters";
-import { CustomOrderForm } from "@/components/forms/CustomOrderForm";
 import { CartDrawer } from "@/components/layout/CartDrawer";
 import Image from "next/image";
 
@@ -72,23 +71,7 @@ export default function Home() {
           <ProductGrid title="Curated Bestsellers" products={MOCK_PRODUCTS} />
         </div>
 
-        {/* Promotional Banner */}
-        <div className="container mx-auto px-6 lg:px-12 my-12">
-          <div className="bg-[#EBE5E0] border border-lacquer-ink/10 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-fraunces text-2xl mb-2">Not sure about your size?</h3>
-              <p className="font-jakarta text-sm text-lacquer-ink/70">
-                Use our interactive guide to find your perfect fit before ordering.
-              </p>
-            </div>
-            <Link 
-              href="/sizing"
-              className="shrink-0 px-6 py-3 bg-lacquer-ink text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors"
-            >
-              Find your perfect fit &rarr;
-            </Link>
-          </div>
-        </div>
+
 
         {/* UGC Customer Photo Showcase */}
         <section className="py-24 bg-lacquer-canvas px-6 lg:px-12">
@@ -115,10 +98,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Custom Order Request */}
-        <div className="bg-white border-t border-lacquer-ink/10">
-          <CustomOrderForm />
-        </div>
+
       </main>
 
       {/* Dark Obsidian Footer */}

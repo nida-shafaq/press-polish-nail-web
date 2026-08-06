@@ -98,7 +98,7 @@ export function CustomOrderForm() {
                     <label className="block font-jetbrains text-xs uppercase mb-2">Full Name</label>
                     <input 
                       {...register("customerName")}
-                      className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent transition-colors"
+                      className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink transition-colors"
                       placeholder="Jane Doe"
                     />
                     {errors.customerName && <p className="text-bordeaux-gloss text-sm mt-1">{errors.customerName.message}</p>}
@@ -108,7 +108,7 @@ export function CustomOrderForm() {
                     <input 
                       {...register("customerEmail")}
                       type="email"
-                      className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent transition-colors"
+                      className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink transition-colors"
                       placeholder="jane@example.com"
                     />
                     {errors.customerEmail && <p className="text-bordeaux-gloss text-sm mt-1">{errors.customerEmail.message}</p>}
@@ -140,7 +140,7 @@ export function CustomOrderForm() {
                   <label className="block font-jetbrains text-xs uppercase mb-2">Preferred Shape</label>
                   <select 
                     {...register("shape")}
-                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent"
+                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink"
                   >
                     <option value="Almond">Almond</option>
                     <option value="Coffin">Coffin</option>
@@ -158,7 +158,7 @@ export function CustomOrderForm() {
                         <input 
                           type="number"
                           {...register(finger as any, { valueAsNumber: true })}
-                          className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-2 text-center font-jetbrains focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent"
+                          className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-2 text-center font-jetbrains focus:outline-none focus:ring-1 focus:ring-lacquer-ink"
                         />
                       </div>
                     ))}
@@ -202,7 +202,7 @@ export function CustomOrderForm() {
                   <label className="block font-jetbrains text-xs uppercase mb-2">Budget Range</label>
                   <select 
                     {...register("budget")}
-                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent"
+                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink"
                   >
                     <option value="">Select a range</option>
                     <option value="$80 - $120">$80 - $120</option>
@@ -232,7 +232,7 @@ export function CustomOrderForm() {
                   <textarea 
                     {...register("notes")}
                     rows={4}
-                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink focus:border-transparent resize-none"
+                    className="w-full bg-lacquer-canvas/50 border border-lacquer-ink/20 p-4 font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink resize-none"
                     placeholder="Describe your vision..."
                   />
                 </div>

@@ -68,7 +68,7 @@ export default function CatalogPage() {
         </div>
       </header>
 
-      <main className="flex-grow">
+      <main className="grow">
         <div className="container mx-auto py-12">
           <div className="px-6 lg:px-12 mb-8">
             <h1 className="font-fraunces text-4xl md:text-5xl tracking-tighter mb-4">The Collection</h1>
@@ -93,6 +93,22 @@ export default function CatalogPage() {
                 className="shrink-0 px-6 py-3 bg-lacquer-ink text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors"
               >
                 View Sizing Guide
+              </Link>
+            </div>
+            
+            {/* Custom Request Banner */}
+            <div className="bg-lacquer-surface text-lacquer-canvas border border-lacquer-ink/10 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 mt-4">
+              <div>
+                <h3 className="font-fraunces text-2xl mb-2">Want to customize something like this?</h3>
+                <p className="font-jakarta text-sm text-lacquer-canvas/70">
+                  Commission a one-of-a-kind set designed exclusively for you.
+                </p>
+              </div>
+              <Link 
+                href="/custom"
+                className="shrink-0 px-6 py-3 bg-white text-lacquer-ink font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-[#EBE5E0] transition-colors"
+              >
+                Bespoke Request &rarr;
               </Link>
             </div>
           </div>
