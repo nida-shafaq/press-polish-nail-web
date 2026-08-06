@@ -36,7 +36,7 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Link href={`/product/${product.id}`} className="block">
+    <Link href={`/product/${product.id}`} prefetch={false} className="block">
       <motion.div 
         className="group relative flex flex-col gap-4 cursor-pointer"
       whileHover={{ y: -5 }}
