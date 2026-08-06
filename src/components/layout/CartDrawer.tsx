@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/useCartStore";
 import Image from "next/image";
-import { X } from "lucide-react";
+import Link from "next/link";
+import { X, ShoppingBag } from "lucide-react";
 
 export function CartDrawer() {
   const { items, isCartOpen, toggleCart, removeItem } = useCartStore();
@@ -47,16 +48,23 @@ export function CartDrawer() {
                 </button>
               </div>
 
-              <div className="flex-1 p-6 overflow-y-auto min-h-0">
+              <div className={`flex-1 p-6 min-h-0 ${items.length === 0 ? "overflow-hidden" : "overflow-y-auto"}`}>
                 {items.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center h-full text-lacquer-ink/50 space-y-4">
-                    <p className="font-jakarta text-lg">Your bag is empty.</p>
-                    <button 
+                  <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
+                    <ShoppingBag className="w-12 h-12 text-lacquer-ink/20 stroke-[1]" />
+                    <div>
+                      <h3 className="font-fraunces text-2xl text-lacquer-ink mb-2">YOUR BAG IS EMPTY</h3>
+                      <p className="font-jakarta text-sm text-lacquer-ink/60 max-w-[250px] mx-auto">
+                        Explore our luxury press-on lacquers and find your perfect set.
+                      </p>
+                    </div>
+                    <Link 
+                      href="/catalog"
                       onClick={() => toggleCart(false)}
-                      className="font-jetbrains text-sm underline decoration-lacquer-ink/30 underline-offset-4 hover:decoration-lacquer-ink transition-colors"
+                      className="inline-block px-8 py-4 bg-lacquer-ink text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors"
                     >
-                      Continue Shopping
-                    </button>
+                      BROWSE COLLECTION
+                    </Link>
                   </div>
                 ) : (
                   <div className="flex flex-col py-4 space-y-4">
@@ -93,29 +101,31 @@ export function CartDrawer() {
                 )}
               </div>
 
-              <div className="p-6 bg-lacquer-canvas border-t border-lacquer-ink/10 space-y-6 shrink-0 z-10">
-                <div className="space-y-2">
-                  <label htmlFor="notes" className="font-jetbrains text-xs uppercase text-lacquer-ink/70">Order Notes / Special Requests</label>
-                  <textarea 
-                    id="notes"
-                    className="w-full bg-transparent border border-lacquer-ink/20 rounded-sm p-3 text-sm font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink resize-none"
-                    rows={2}
-                    placeholder="E.g., Please prioritize shipping..."
-                  />
-                </div>
-                
-                <div className="flex items-center justify-between font-jakarta font-medium text-lg">
-                  <span>Subtotal</span>
-                  <span className="font-jetbrains">${subtotal.toFixed(2)}</span>
-                </div>
+              {items.length > 0 && (
+                <div className="p-6 bg-lacquer-canvas border-t border-lacquer-ink/10 space-y-6 shrink-0 z-10">
+                  <div className="space-y-2">
+                    <label htmlFor="notes" className="font-jetbrains text-xs uppercase text-lacquer-ink/70">Order Notes / Special Requests</label>
+                    <textarea 
+                      id="notes"
+                      className="w-full bg-transparent border border-lacquer-ink/20 rounded-sm p-3 text-sm font-jakarta focus:outline-none focus:ring-1 focus:ring-lacquer-ink resize-none"
+                      rows={2}
+                      placeholder="E.g., Please prioritize shipping..."
+                    />
+                  </div>
+                  
+                  <div className="flex items-center justify-between font-jakarta font-medium text-lg">
+                    <span>Subtotal</span>
+                    <span className="font-jetbrains">${subtotal.toFixed(2)}</span>
+                  </div>
 
-                <button className="w-full py-4 bg-lacquer-surface text-lacquer-canvas font-jakarta uppercase tracking-wider text-sm rounded-sm hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                  Checkout
-                </button>
-                <p className="font-jetbrains text-[10px] text-center text-lacquer-ink/50 uppercase tracking-widest mt-2">
-                  Secure checkout via Stripe
-                </p>
-              </div>
+                  <button className="w-full py-4 bg-lacquer-surface text-lacquer-canvas font-jakarta uppercase tracking-wider text-sm rounded-sm hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                    Checkout
+                  </button>
+                  <p className="font-jetbrains text-[10px] text-center text-lacquer-ink/50 uppercase tracking-widest mt-2">
+                    Secure checkout via Stripe
+                  </p>
+                </div>
+              )}
             </motion.div>
           </>
         )}
