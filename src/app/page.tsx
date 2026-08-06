@@ -6,37 +6,7 @@ import { Header } from "@/components/layout/Header";
 import Image from "next/image";
 import { Suspense } from "react";
 
-// Mock products for the home page rail
-const MOCK_PRODUCTS = [
-  {
-    id: "1",
-    title: "Bordeaux Noir",
-    price: 85.00,
-    swatchHex: "#5B1217",
-    images: ["https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80"]
-  },
-  {
-    id: "2",
-    title: "Taupe Chrome",
-    price: 95.00,
-    swatchHex: "#8C7A70",
-    images: ["https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?w=800&q=80"]
-  },
-  {
-    id: "3",
-    title: "Gilded Foil",
-    price: 115.00,
-    swatchHex: "#D4AF37",
-    images: ["https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80"]
-  },
-  {
-    id: "4",
-    title: "Obsidian Velvet",
-    price: 90.00,
-    swatchHex: "#161313",
-    images: ["https://images.unsplash.com/photo-1612887390768-fb02affea7a6?w=800&q=80"]
-  }
-];
+import { MOCK_PRODUCTS } from "@/lib/mockData";
 
 export default function Home() {
   return (
@@ -58,7 +28,7 @@ export default function Home() {
           <Suspense fallback={<div className="h-24 bg-lacquer-canvas border-b border-lacquer-ink/10 animate-pulse" />}>
             <ProductFilters />
           </Suspense>
-          <ProductGrid title="Curated Bestsellers" products={MOCK_PRODUCTS} />
+          <ProductGrid title="Curated Bestsellers" products={MOCK_PRODUCTS.slice(0, 4)} />
         </div>
 
 

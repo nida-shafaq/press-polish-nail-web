@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { SwatchChip } from "@/components/ui/SwatchChip";
 import { useCartStore } from "@/store/useCartStore";
 
@@ -21,7 +22,8 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addItem, showToast, toggleCart } = useCartStore();
 
   const handleQuickAdd = (e: React.MouseEvent) => {
-    e.stopPropagation(); // prevent card click if we add one later
+    e.preventDefault(); // prevent navigation to PDP
+    e.stopPropagation(); // prevent card click
     addItem({
       id: product.id,
       title: product.title,
@@ -34,8 +36,9 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <motion.div 
-      className="group relative flex flex-col gap-4 cursor-pointer"
+    <Link href={`/product/${product.id}`} className="block">
+      <motion.div 
+        className="group relative flex flex-col gap-4 cursor-pointer"
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
     >
@@ -67,5 +70,6 @@ export function ProductCard({ product }: ProductCardProps) {
         <SwatchChip colorHex={product.swatchHex} size="sm" />
       </div>
     </motion.div>
+    </Link>
   );
 }
