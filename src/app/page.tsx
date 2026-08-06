@@ -1,69 +1,170 @@
+import { Hero } from "@/components/sections/Hero";
+import Link from "next/link";
+import { ProductGrid } from "@/components/sections/ProductGrid";
+import { ProductFilters } from "@/components/sections/ProductFilters";
+import { CustomOrderForm } from "@/components/forms/CustomOrderForm";
+import { CartDrawer } from "@/components/layout/CartDrawer";
 import Image from "next/image";
+
+// Mock products for the home page rail
+const MOCK_PRODUCTS = [
+  {
+    id: "1",
+    title: "Bordeaux Noir",
+    price: 85.00,
+    swatchHex: "#5B1217",
+    images: ["https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80"]
+  },
+  {
+    id: "2",
+    title: "Taupe Chrome",
+    price: 95.00,
+    swatchHex: "#8C7A70",
+    images: ["https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?w=800&q=80"]
+  },
+  {
+    id: "3",
+    title: "Gilded Foil",
+    price: 115.00,
+    swatchHex: "#D4AF37",
+    images: ["https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80"]
+  },
+  {
+    id: "4",
+    title: "Obsidian Velvet",
+    price: 90.00,
+    swatchHex: "#161313",
+    images: ["https://images.unsplash.com/photo-1612887390768-fb02affea7a6?w=800&q=80"]
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-lacquer-canvas text-lacquer-ink flex flex-col">
+      {/* Announcement Banner */}
+      <div className="w-full bg-lacquer-ink text-lacquer-canvas text-center py-2 px-4 font-jetbrains text-xs tracking-widest uppercase">
+        Complimentary overnight shipping on all bespoke orders. Ends in 24:00:00
+      </div>
+
+      {/* Header / Nav (Simplified for demo) */}
+      <header className="sticky top-0 z-50 w-full bg-lacquer-canvas/80 backdrop-blur-md border-b border-lacquer-ink/10">
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/catalog" className="font-jetbrains text-sm uppercase tracking-widest cursor-pointer hover:text-bordeaux-gloss transition-colors">
+            Catalog
+          </Link>
+          <div className="font-fraunces text-2xl tracking-tighter">PRESS & POLISH</div>
+          <div className="flex items-center gap-6">
+            <Link href="/sizing" className="font-jetbrains text-sm uppercase tracking-widest hover:text-bordeaux-gloss hidden md:block transition-colors">
+              Sizing Guide
+            </Link>
+            <CartDrawer />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <main className="grow">
+        {/* Hero Section */}
+        <Hero />
+
+        {/* Bestsellers Section */}
+        <div className="container mx-auto">
+          <ProductFilters />
+          <ProductGrid title="Curated Bestsellers" products={MOCK_PRODUCTS} />
+        </div>
+
+        {/* Promotional Banner */}
+        <div className="container mx-auto px-6 lg:px-12 my-12">
+          <div className="bg-[#EBE5E0] border border-lacquer-ink/10 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-fraunces text-2xl mb-2">Not sure about your size?</h3>
+              <p className="font-jakarta text-sm text-lacquer-ink/70">
+                Use our interactive guide to find your perfect fit before ordering.
+              </p>
+            </div>
+            <Link 
+              href="/sizing"
+              className="shrink-0 px-6 py-3 bg-lacquer-ink text-lacquer-canvas font-jakarta text-sm uppercase tracking-wider rounded-sm hover:bg-black transition-colors"
+            >
+              Find your perfect fit &rarr;
+            </Link>
+          </div>
+        </div>
+
+        {/* UGC Customer Photo Showcase */}
+        <section className="py-24 bg-lacquer-canvas px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="font-fraunces text-3xl md:text-4xl mb-4">Worn by Muses</h2>
+            <p className="font-jakarta text-lacquer-ink/70">Tag @pressandpolish to be featured.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer">
+                <Image 
+                  src={`https://images.unsplash.com/photo-${i % 2 === 0 ? '1619607146034-5a05296c8f9a' : '1630843599725-32ead7671867'}?w=400&q=80`}
+                  alt="Customer photo"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 text-white font-fraunces text-xl transition-opacity duration-300">
+                    Shop Look
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Custom Order Request */}
+        <div className="bg-white border-t border-lacquer-ink/10">
+          <CustomOrderForm />
         </div>
       </main>
+
+      {/* Dark Obsidian Footer */}
+      <footer className="bg-lacquer-surface text-lacquer-canvas py-16 px-6 lg:px-12">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-lacquer-canvas/20 pb-12 mb-8">
+          <div>
+            <h2 className="font-fraunces text-3xl mb-6 tracking-tighter">PRESS & POLISH</h2>
+            <p className="font-jakarta text-sm text-lacquer-canvas/70 max-w-xs">
+              Elevating the press-on experience with bespoke, handcrafted lacquers designed to command the room.
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="font-jetbrains text-xs uppercase tracking-widest mb-6 text-lacquer-canvas/50">Explore</h4>
+            <ul className="space-y-4 font-jakarta text-sm">
+              <li><Link href="/" className="hover:text-bordeaux-gloss transition-colors">Home</Link></li>
+              <li><Link href="/catalog" className="hover:text-bordeaux-gloss transition-colors">Catalog</Link></li>
+              <li><Link href="/sizing" className="hover:text-bordeaux-gloss transition-colors">Sizing Guide</Link></li>
+              <li><Link href="#custom" className="hover:text-bordeaux-gloss transition-colors">Custom Request</Link></li>
+              <li><a href="#" className="hover:text-bordeaux-gloss transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-jetbrains text-xs uppercase tracking-widest mb-6 text-lacquer-canvas/50">The Atelier Newsletter</h4>
+            <div className="flex border-b border-lacquer-canvas/30 pb-2">
+              <input 
+                type="email" 
+                placeholder="Email Address" 
+                className="bg-transparent border-none outline-none grow font-jakarta text-sm placeholder:text-lacquer-canvas/30"
+              />
+              <button className="font-jetbrains text-xs uppercase tracking-widest hover:text-bordeaux-gloss transition-colors">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-jetbrains text-[10px] uppercase tracking-widest text-lacquer-canvas/40">
+          <p>&copy; {new Date().getFullYear()} Press & Polish. All rights reserved.</p>
+          <div className="flex gap-4">
+            <span>Secure Checkout</span>
+            <span>Worldwide Shipping</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
